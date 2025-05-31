@@ -12,17 +12,11 @@ import {
   Maximize, 
   MapPin, 
   Calendar,
-  User,
   Phone,
   Mail,
   ChevronLeft,
   ChevronRight,
-  Star,
-  Home,
-  Shield,
-  Wifi,
-  Dumbbell,
-  Car as CarIcon
+  Star
 } from 'lucide-react'
 
 // Mock data - em uma aplicação real, isso viria de uma API
