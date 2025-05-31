@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import { Search, MapPin, Filter, Bed, Bath, Car, DollarSign, Home } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
@@ -32,14 +32,19 @@ export default function SearchBar() {
     setFilters(prev => ({ ...prev, [key]: value }))
   }
 
+  const containerRef = useRef<HTMLDivElement>(null)
+
   return (
-    <div className="backdrop-blur-md bg-white/90 rounded-xl shadow-2xl p-8 border border-white/40">
+    <div 
+      ref={containerRef}
+      className="backdrop-blur-md bg-white/90 rounded-xl shadow-2xl p-4 sm:p-6 lg:p-8 border border-white/40"
+    >
       {/* Tabs */}
-      <div className="flex space-x-2 mb-8 bg-white/50 rounded-xl p-2 border border-white/30">
+      <div className="flex space-x-2 mb-6 sm:mb-8 bg-white/50 rounded-xl p-2 border border-white/30">
         <button
           onClick={() => setActiveTab('comprar')}
           className={cn(
-            "flex-1 py-3 px-6 rounded-lg text-sm font-semibold transition-all duration-300",
+            "flex-1 py-2 sm:py-3 px-4 sm:px-6 rounded-lg text-sm font-semibold transition-all duration-300",
             activeTab === 'comprar' 
               ? "bg-blue-600 text-white shadow-lg" 
               : "text-gray-600 hover:text-gray-900 hover:bg-white/50"
@@ -50,7 +55,7 @@ export default function SearchBar() {
         <button
           onClick={() => setActiveTab('alugar')}
           className={cn(
-            "flex-1 py-3 px-6 rounded-lg text-sm font-semibold transition-all duration-300",
+            "flex-1 py-2 sm:py-3 px-4 sm:px-6 rounded-lg text-sm font-semibold transition-all duration-300",
             activeTab === 'alugar' 
               ? "bg-blue-600 text-white shadow-lg" 
               : "text-gray-600 hover:text-gray-900 hover:bg-white/50"
@@ -61,9 +66,9 @@ export default function SearchBar() {
       </div>
 
       {/* Main Search */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-4 sm:mb-6">
         {/* Location */}
-        <div className="md:col-span-2">
+        <div className="sm:col-span-2">
           <div className="relative">
             <MapPin className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
             <input
@@ -72,7 +77,7 @@ export default function SearchBar() {
               placeholder="Cidade, bairro, endereço..."
               value={filters.location}
               onChange={(e) => handleFilterChange('location', e.target.value)}
-              className="w-full pl-12 pr-4 py-4 border border-white/30 rounded-xl focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 bg-white/60 backdrop-blur-sm transition-all placeholder-gray-500 text-gray-700 font-medium shadow-lg"
+              className="w-full pl-12 pr-4 py-3 sm:py-4 border border-white/30 rounded-xl focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 bg-white/60 backdrop-blur-sm transition-all placeholder-gray-500 text-gray-700 font-medium shadow-lg text-sm sm:text-base"
             />
           </div>
         </div>
@@ -83,7 +88,7 @@ export default function SearchBar() {
             id="propertyType"
             value={filters.propertyType}
             onChange={(e) => handleFilterChange('propertyType', e.target.value)}
-            className="w-full px-4 py-4 border border-white/30 rounded-xl focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 bg-white/60 backdrop-blur-sm transition-all text-gray-700 font-medium shadow-lg appearance-none cursor-pointer"
+            className="w-full px-4 py-3 sm:py-4 border border-white/30 rounded-xl focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 bg-white/60 backdrop-blur-sm transition-all text-gray-700 font-medium shadow-lg appearance-none cursor-pointer text-sm sm:text-base"
           >
             {propertyTypes.map(type => (
               <option key={type.value} value={type.value}>
@@ -95,12 +100,12 @@ export default function SearchBar() {
         </div>
 
         {/* Search Button */}
-        <div>
+        <div className="sm:col-span-2 lg:col-span-1">
           <button 
             type="button"
-            className="w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white py-4 px-6 rounded-xl hover:from-blue-700 hover:to-blue-800 transition-all flex items-center justify-center space-x-3 font-semibold text-lg shadow-lg hover:shadow-xl transform hover:scale-[1.02]"
+            className="w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white py-3 sm:py-4 px-4 sm:px-6 rounded-xl hover:from-blue-700 hover:to-blue-800 transition-all flex items-center justify-center space-x-2 sm:space-x-3 font-semibold text-sm sm:text-lg shadow-lg hover:shadow-xl transform hover:scale-[1.02]"
           >
-            <Search className="h-5 w-5" />
+            <Search className="h-4 w-4 sm:h-5 sm:w-5" />
             <span>Buscar</span>
           </button>
         </div>

@@ -73,7 +73,7 @@ export default function Hero() {
 
   return (
     <>
-      <section className="relative min-h-[70vh] overflow-hidden">
+      <section className="relative min-h-[60vh] sm:min-h-[70vh] overflow-hidden">
         {/* Background Image with zoom animation */}
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat transform scale-105 animate-slow-zoom"
@@ -83,39 +83,39 @@ export default function Hero() {
         />
         
         {/* Content */}
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full h-[70vh] flex flex-col justify-center">
-          <div className="text-center mb-12">
-            <h1 className="scroll-reveal text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 text-shadow-strong">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full min-h-[60vh] sm:h-[70vh] flex flex-col justify-center">
+          <div className="text-center mb-8 sm:mb-12 pt-4 sm:pt-0">
+            <h1 className="scroll-reveal text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 sm:mb-6 text-shadow-strong leading-tight">
               <span>Encontre o</span>
               <span className="text-blue-200"> Imóvel dos Seus Sonhos</span>
             </h1>
-            <p className="scroll-reveal text-xl md:text-2xl text-gray-50 mb-8 max-w-3xl mx-auto text-shadow-medium font-semibold">
+            <p className="scroll-reveal text-base sm:text-lg md:text-xl lg:text-2xl text-gray-50 mb-6 sm:mb-8 max-w-3xl mx-auto text-shadow-medium font-semibold px-4 leading-relaxed">
               Descubra as melhores oportunidades do mercado imobiliário com a confiança de quem é especialista há mais de 20 anos
             </p>
             
             {/* Stats with animated counters */}
-            <div ref={statsRef} className="scroll-reveal grid grid-cols-1 md:grid-cols-3 gap-8 mb-12 max-w-3xl mx-auto">
-              <div className="text-center backdrop-blur-md bg-white/25 rounded-xl py-6 px-4 border border-white/40 shadow-2xl transform hover:scale-105 transition-transform duration-300">
-                <div className="text-3xl md:text-4xl font-bold text-white mb-2 text-shadow-strong">
+            <div ref={statsRef} className="scroll-reveal grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-8 mb-6 sm:mb-12 max-w-3xl mx-auto px-4">
+              <div className="text-center backdrop-blur-md bg-white/25 rounded-xl py-4 sm:py-6 px-3 sm:px-4 border border-white/40 shadow-2xl transform hover:scale-105 transition-transform duration-300">
+                <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-1 sm:mb-2 text-shadow-strong">
                   {isVisible ? formatNumber(counts.properties, targetCounts.properties) : '0+'}
                 </div>
-                <div className="text-gray-50 font-semibold text-shadow-medium">
+                <div className="text-gray-50 font-semibold text-shadow-medium text-xs sm:text-sm md:text-base">
                   Imóveis Disponíveis
                 </div>
               </div>
-              <div className="text-center backdrop-blur-md bg-white/25 rounded-xl py-6 px-4 border border-white/40 shadow-2xl transform hover:scale-105 transition-transform duration-300">
-                <div className="text-3xl md:text-4xl font-bold text-white mb-2 text-shadow-strong">
+              <div className="text-center backdrop-blur-md bg-white/25 rounded-xl py-4 sm:py-6 px-3 sm:px-4 border border-white/40 shadow-2xl transform hover:scale-105 transition-transform duration-300">
+                <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-1 sm:mb-2 text-shadow-strong">
                   {isVisible ? formatNumber(counts.cities, targetCounts.cities) : '0+'}
                 </div>
-                <div className="text-gray-50 font-semibold text-shadow-medium">
+                <div className="text-gray-50 font-semibold text-shadow-medium text-xs sm:text-sm md:text-base">
                   Cidades Atendidas
                 </div>
               </div>
-              <div className="text-center backdrop-blur-md bg-white/25 rounded-xl py-6 px-4 border border-white/40 shadow-2xl transform hover:scale-105 transition-transform duration-300">
-                <div className="text-3xl md:text-4xl font-bold text-white mb-2 text-shadow-strong">
+              <div className="text-center backdrop-blur-md bg-white/25 rounded-xl py-4 sm:py-6 px-3 sm:px-4 border border-white/40 shadow-2xl transform hover:scale-105 transition-transform duration-300">
+                <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-1 sm:mb-2 text-shadow-strong">
                   {isVisible ? formatNumber(counts.clients, targetCounts.clients) : '0+'}
                 </div>
-                <div className="text-gray-50 font-semibold text-shadow-medium">
+                <div className="text-gray-50 font-semibold text-shadow-medium text-xs sm:text-sm md:text-base">
                   Clientes Satisfeitos
                 </div>
               </div>
@@ -123,8 +123,8 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Smooth wave transition */}
-        <div className="absolute bottom-0 left-0 right-0 z-20">
+        {/* Smooth wave transition - only on larger screens */}
+        <div className="hidden sm:block absolute bottom-0 left-0 right-0 z-20">
           <svg 
             className="w-full h-20 text-white" 
             viewBox="0 0 1200 120" 
@@ -139,7 +139,7 @@ export default function Hero() {
       </section>
 
       {/* Search Bar positioned between sections */}
-      <div className="scroll-reveal relative z-30 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 -mt-32">
+      <div className="scroll-reveal relative z-30 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 sm:-mt-32">
         <SearchBar />
       </div>
     </>
